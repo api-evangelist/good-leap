@@ -1,0 +1,15 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/good-leap-developer-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: JWT obtained via POST /posfinancing/rest/v2/auth/token (organizationId), refreshed
+    via /auth/token/refresh.
+  sources:
+  - openapi/good-leap-developer-api-openapi.yml

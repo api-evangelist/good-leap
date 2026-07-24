@@ -1,0 +1,86 @@
+openapi: 3.0.3
+info:
+  title: GoodLeap Developer Authorization & Elevation Management Loan Notes Management API
+  version: '2.0'
+  description: 'The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response schemas are intentionally minimal because the source collection does not publish full schemas.'
+  x-derived-from: postman/good-leap-developer-api.postman_collection.json
+servers:
+- url: https://api.goodleap.com
+  description: Production
+- url: https://sandbox01-api.goodleap.com
+  description: Sandbox / test
+security:
+- bearerAuth: []
+tags:
+- name: Loan Notes Management
+paths:
+  /posfinancing/rest/v2/loans/{id}/notes:
+    get:
+      operationId: loanNotes
+      summary: Loan Notes
+      tags:
+      - Loan Notes Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get list of all notes associated with a loan and its cases.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: createANote
+      summary: Create a Note
+      tags:
+      - Loan Notes Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Post a note to a loan and optionally its cases.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}/notes/{reference}:
+    get:
+      operationId: loanNotesByReference
+      summary: Loan Notes by Reference
+      tags:
+      - Loan Notes Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get list of all notes associated with a loan and its cases by reference.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: reference
+        in: path
+        required: true
+        schema:
+          type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /posfinancing/rest/v2/auth/token (organizationId), refreshed via /auth/token/refresh.

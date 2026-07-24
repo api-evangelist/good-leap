@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: GoodLeap Developer Authorization & Elevation Management API
+  version: '2.0'
+  description: 'The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response schemas are intentionally minimal because the source collection does not publish full schemas.'
+  x-derived-from: postman/good-leap-developer-api.postman_collection.json
+servers:
+- url: https://api.goodleap.com
+  description: Production
+- url: https://sandbox01-api.goodleap.com
+  description: Sandbox / test
+security:
+- bearerAuth: []
+tags:
+- name: Authorization & Elevation Management
+paths:
+  /posfinancing/rest/v2/auth/organizations:
+    get:
+      operationId: connectedOrganizationsList
+      summary: Connected Organizations List
+      tags:
+      - Authorization & Elevation Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a list of connected organizations.
+  /posfinancing/rest/v2/auth/token:
+    post:
+      operationId: generateJwtToken
+      summary: Generate JWT Token
+      tags:
+      - Authorization & Elevation Management
+      responses:
+        '200':
+          description: Successful response
+      description: Returns an elevated access token with Guest claims from an input host organization.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/auth/token/refresh:
+    post:
+      operationId: refreshJwtToken
+      summary: Refresh JWT Token
+      tags:
+      - Authorization & Elevation Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Create a refreshed elevated jwt token with Guest claims from a host organization.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/parties:
+    get:
+      operationId: connectedParties
+      summary: Connected Parties
+      tags:
+      - Authorization & Elevation Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a list of connected parties.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /posfinancing/rest/v2/auth/token (organizationId), refreshed via /auth/token/refresh.

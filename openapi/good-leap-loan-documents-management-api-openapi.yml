@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: GoodLeap Developer Authorization & Elevation Management Loan Documents Management API
+  version: '2.0'
+  description: 'The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response schemas are intentionally minimal because the source collection does not publish full schemas.'
+  x-derived-from: postman/good-leap-developer-api.postman_collection.json
+servers:
+- url: https://api.goodleap.com
+  description: Production
+- url: https://sandbox01-api.goodleap.com
+  description: Sandbox / test
+security:
+- bearerAuth: []
+tags:
+- name: Loan Documents Management
+paths:
+  /posfinancing/rest/v2/loans/{id}/uploadurls:
+    get:
+      operationId: homeImprovementContractUploadUrl
+      summary: Home Improvement Contract Upload URL
+      tags:
+      - Loan Documents Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a single-use, signed URL to upload a case document.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: uploadType
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/documents:
+    post:
+      operationId: sendLoanDocuments
+      summary: Send Loan Documents
+      tags:
+      - Loan Documents Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: "A successful request will result in loan documents being sent to the borrower(s). \nThis can happen as one of two scenarios:\n1. If loan documents have yet to be signed, unsigned documents are sent.\n2. If loan documents have already been signed, a copy of the signed documents are re-sent. \n   The loan’s status will remain untouched."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /posfinancing/rest/v2/auth/token (organizationId), refreshed via /auth/token/refresh.

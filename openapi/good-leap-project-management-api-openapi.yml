@@ -1,0 +1,132 @@
+openapi: 3.0.3
+info:
+  title: GoodLeap Developer Authorization & Elevation Management Project Management API
+  version: '2.0'
+  description: 'The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response schemas are intentionally minimal because the source collection does not publish full schemas.'
+  x-derived-from: postman/good-leap-developer-api.postman_collection.json
+servers:
+- url: https://api.goodleap.com
+  description: Production
+- url: https://sandbox01-api.goodleap.com
+  description: Sandbox / test
+security:
+- bearerAuth: []
+tags:
+- name: Project Management
+paths:
+  /posfinancing/rest/v2/loans/{id}/project-types:
+    get:
+      operationId: projectsTypesInfo
+      summary: Projects Types Info
+      tags:
+      - Project Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get the loan's projects types.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: inputs
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: inputs
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: validation
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/project:
+    get:
+      operationId: loanProjectInfo
+      summary: Loan Project Info
+      tags:
+      - Project Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get the loan's project details.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/projects:
+    get:
+      operationId: loanProjectsInfo
+      summary: Loan Projects Info
+      tags:
+      - Project Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get the loan's project details.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: updateProjectsInfo
+      summary: Update Projects Info
+      tags:
+      - Project Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Update a loan’s projects information.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/categories/{id}/components:
+    get:
+      operationId: projectComponents
+      summary: Project Components
+      tags:
+      - Project Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a list of components with approved manufacturers.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /posfinancing/rest/v2/auth/token (organizationId), refreshed via /auth/token/refresh.

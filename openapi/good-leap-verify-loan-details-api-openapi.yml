@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: GoodLeap Developer Authorization & Elevation Management Verify Loan Details API
+  version: '2.0'
+  description: 'The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response schemas are intentionally minimal because the source collection does not publish full schemas.'
+  x-derived-from: postman/good-leap-developer-api.postman_collection.json
+servers:
+- url: https://api.goodleap.com
+  description: Production
+- url: https://sandbox01-api.goodleap.com
+  description: Sandbox / test
+security:
+- bearerAuth: []
+tags:
+- name: Verify Loan Details
+paths:
+  /posfinancing/rest/v2/loans/{id}/details:
+    post:
+      operationId: verifyLoanDetails
+      summary: Verify Loan Details
+      tags:
+      - Verify Loan Details
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Confirm the amount and offer of the loan.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /posfinancing/rest/v2/auth/token (organizationId), refreshed via /auth/token/refresh.

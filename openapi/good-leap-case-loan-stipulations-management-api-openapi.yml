@@ -1,0 +1,147 @@
+openapi: 3.0.3
+info:
+  title: GoodLeap Developer Authorization & Elevation Management Case (loan stipulations) Management API
+  version: '2.0'
+  description: 'The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response schemas are intentionally minimal because the source collection does not publish full schemas.'
+  x-derived-from: postman/good-leap-developer-api.postman_collection.json
+servers:
+- url: https://api.goodleap.com
+  description: Production
+- url: https://sandbox01-api.goodleap.com
+  description: Sandbox / test
+security:
+- bearerAuth: []
+tags:
+- name: Case (loan stipulations) Management
+paths:
+  /posfinancing/rest/v2/loans/{id}/cases:
+    get:
+      operationId: cases
+      summary: Cases
+      tags:
+      - Case (loan stipulations) Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Returns a collection of cases.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/cases/{caseId}/uploadurl:
+    get:
+      operationId: caseUploadUrl
+      summary: Case Upload URL
+      tags:
+      - Case (loan stipulations) Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a single-use, signed URL to upload a case document.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: caseId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: mimeType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: docType
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{loanId}/cases:
+    put:
+      operationId: updateSalesRepStateLicenseInfo
+      summary: Update Sales Rep State License Info
+      tags:
+      - Case (loan stipulations) Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Update a loan’s case information.
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}/portals/borrower-upload-url:
+    get:
+      operationId: goodleapBorrowerPortalUrl
+      summary: GoodLeap Borrower Portal URL
+      tags:
+      - Case (loan stipulations) Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: URL redirect to the GoodLeap hosted borrower upload experience to upload documents for cases.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/cases/{id}/identity-verification:
+    get:
+      operationId: socureIdentityVerification
+      summary: Socure Identity Verification
+      tags:
+      - Case (loan stipulations) Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: documentType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: mobileNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: sendSms
+        in: query
+        required: false
+        schema:
+          type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /posfinancing/rest/v2/auth/token (organizationId), refreshed via /auth/token/refresh.

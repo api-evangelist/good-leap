@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: GoodLeap Developer Authorization & Elevation Management Promotions API
+  version: '2.0'
+  description: 'The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response schemas are intentionally minimal because the source collection does not publish full schemas.'
+  x-derived-from: postman/good-leap-developer-api.postman_collection.json
+servers:
+- url: https://api.goodleap.com
+  description: Production
+- url: https://sandbox01-api.goodleap.com
+  description: Sandbox / test
+security:
+- bearerAuth: []
+tags:
+- name: Promotions
+paths:
+  /posfinancing/rest/v2/promotions:
+    get:
+      operationId: promotions
+      summary: Promotions
+      tags:
+      - Promotions
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Returns a collection of promotions to use when getting offers.
+      parameters:
+      - name: categoryId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: offerId
+        in: query
+        required: false
+        schema:
+          type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /posfinancing/rest/v2/auth/token (organizationId), refreshed via /auth/token/refresh.

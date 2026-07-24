@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: GoodLeap Developer Authorization & Elevation Management Loan Submission API
+  version: '2.0'
+  description: 'The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response schemas are intentionally minimal because the source collection does not publish full schemas.'
+  x-derived-from: postman/good-leap-developer-api.postman_collection.json
+servers:
+- url: https://api.goodleap.com
+  description: Production
+- url: https://sandbox01-api.goodleap.com
+  description: Sandbox / test
+security:
+- bearerAuth: []
+tags:
+- name: Loan Submission
+paths:
+  /posfinancing/rest/v2/loans:
+    post:
+      operationId: submitLoanApplication
+      summary: Submit Loan Application
+      tags:
+      - Loan Submission
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Submit an application to create a new loan. Returns the application’s outcome
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans-share:
+    post:
+      operationId: shareLoanApplication
+      summary: Share Loan Application
+      tags:
+      - Loan Submission
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Returns the url and an optional email to the application for completion and loan submission.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /posfinancing/rest/v2/auth/token (organizationId), refreshed via /auth/token/refresh.

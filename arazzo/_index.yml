@@ -1,0 +1,7 @@
+generated: '2026-07-19'
+method: derived
+workflows:
+- file: good-leap-originate-and-track-loan.yml
+  workflowId: originateAndTrackLoan
+  title: Originate and track a GoodLeap loan
+  summary: Authenticate, submit a loan application, then track its status and next actions.

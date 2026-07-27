@@ -1,0 +1,681 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/good-leap-developer-api-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 53
+  by_action_class:
+    connected: 32
+    acting: 21
+  by_consequence:
+    read: 32
+    write: 17
+    physical: 4
+  human_in_the_loop_required: 0
+operations:
+- path: /posfinancing/rest/v2/auth/organizations
+  method: get
+  operationId: connectedOrganizationsList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/auth/token
+  method: post
+  operationId: generateJwtToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/auth/token/refresh
+  method: post
+  operationId: refreshJwtToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/parties
+  method: get
+  operationId: connectedParties
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/states
+  method: get
+  operationId: channelsByStates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/channels
+  method: get
+  operationId: statesByChannels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/promotions
+  method: get
+  operationId: promotions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/categories
+  method: get
+  operationId: installCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/categories/all/limitations
+  method: get
+  operationId: allLoanMinMaxValuesForStatesAndCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/categories/{id}/limitations
+  method: get
+  operationId: loanMinMaxValuesByCategoryId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/offers
+  method: get
+  operationId: availableLoanOffers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/itc-latest
+  method: get
+  operationId: currentItcPercentage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/payments
+  method: get
+  operationId: monthlyLoanPayments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/disclosures
+  method: get
+  operationId: disclosures
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans
+  method: post
+  operationId: submitLoanApplication
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/loans
+  method: get
+  operationId: listLoans
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans-share
+  method: post
+  operationId: shareLoanApplication
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/loans/{id}
+  method: get
+  operationId: loanById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/status
+  method: get
+  operationId: loanStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/offer
+  method: get
+  operationId: loanOfferDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/timeline
+  method: get
+  operationId: loanTimeline
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/actions
+  method: get
+  operationId: nextAvailableLoanActions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/cases
+  method: get
+  operationId: cases
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/cases/{caseId}/uploadurl
+  method: get
+  operationId: caseUploadUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{loanId}/cases
+  method: put
+  operationId: updateSalesRepStateLicenseInfo
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/loans/{id}/portals/borrower-upload-url
+  method: get
+  operationId: goodleapBorrowerPortalUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/cases/{id}/identity-verification
+  method: get
+  operationId: socureIdentityVerification
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/uploadurls
+  method: get
+  operationId: homeImprovementContractUploadUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/documents
+  method: post
+  operationId: sendLoanDocuments
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/loans/{id}/details
+  method: post
+  operationId: verifyLoanDetails
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/loans/{id}/project-types
+  method: get
+  operationId: projectsTypesInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/project
+  method: get
+  operationId: loanProjectInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/projects
+  method: get
+  operationId: loanProjectsInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/projects
+  method: put
+  operationId: updateProjectsInfo
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/categories/{id}/components
+  method: get
+  operationId: projectComponents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/cpc
+  method: post
+  operationId: sendCertificateOfProjectCompletionCpcHiOnly
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/loans/{id}/milestones
+  method: post
+  operationId: transitionAMilestone
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/loans/{id}/changeorders
+  method: post
+  operationId: createAChangeOrder
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/loans/{id}/cancellations
+  method: post
+  operationId: cancelALoan
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/loans/{id}/notes
+  method: get
+  operationId: loanNotes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/notes
+  method: post
+  operationId: createANote
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/loans/{id}/notes/{reference}
+  method: get
+  operationId: loanNotesByReference
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/loans/{id}/tags
+  method: post
+  operationId: addLoanTags
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/loans/{id}/tags{batchDelete}
+  method: post
+  operationId: deleteLoanTags
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/user/{id}
+  method: get
+  operationId: userById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/users
+  method: post
+  operationId: createUser
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/users
+  method: get
+  operationId: listAnOrganizationsUsers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/users/roles-channels
+  method: get
+  operationId: allRolesAndChannels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /posfinancing/rest/v2/users/{id}/license
+  method: put
+  operationId: updateUserStateLicense
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/users/{id}/role
+  method: put
+  operationId: updateUserRole
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/users/{id}
+  method: put
+  operationId: updateUserInformation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posfinancing/rest/v2/users/{id}/channels
+  method: put
+  operationId: updateUserChannels
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /toolbox/rest/v2/loans/{id}/clear
+  method: post
+  operationId: fundLoan
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required

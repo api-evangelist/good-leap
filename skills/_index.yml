@@ -1,0 +1,12 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/good-leap-developer-api-openapi.yml
+skills:
+- file: good-leap-submit-and-track-loan.md
+  name: Submit and track a GoodLeap loan application
+  api: openapi/good-leap-developer-api-openapi.yml
+  operations: [generateJwtToken, monthlyLoanPayments, submitLoanApplication, loanStatus, loanTimeline, nextAvailableLoanActions]
+- file: good-leap-manage-cases-and-documents.md
+  name: Clear GoodLeap loan cases and upload documents
+  api: openapi/good-leap-developer-api-openapi.yml
+  operations: [cases, caseUploadUrl, sendLoanDocuments, homeImprovementContractUploadUrl, verifyLoanDetails]

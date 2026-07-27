@@ -1,0 +1,60 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/good-leap-developer-api-openapi.yml (path + id-reference analysis)
+entities:
+- name: Loan
+- name: Offer
+- name: Case
+- name: Project
+- name: Milestone
+- name: ChangeOrder
+- name: Note
+- name: Tag
+- name: User
+- name: Organization
+- name: Promotion
+- name: Category
+- name: Disclosure
+relationships:
+- from: Case
+  to: Loan
+  type: belongs_to
+  via: loanId
+- from: Project
+  to: Loan
+  type: belongs_to
+  via: loanId
+- from: Milestone
+  to: Loan
+  type: belongs_to
+  via: loanId
+- from: ChangeOrder
+  to: Loan
+  type: belongs_to
+  via: loanId
+- from: Note
+  to: Loan
+  type: belongs_to
+  via: loanId
+- from: Tag
+  to: Loan
+  type: belongs_to
+  via: loanId
+- from: Loan
+  to: Offer
+  type: has_one
+  via: offerId
+- from: User
+  to: Organization
+  type: belongs_to
+  via: organizationId
+- from: Loan
+  to: Case
+  type: has_many
+  via: loanId
+- from: Loan
+  to: Project
+  type: has_many
+  via: loanId
+notes: Entities and relationships derived from resource paths and id path/query parameters (loanId, offerId,
+  organizationId, categoryId); the public collection does not publish full field schemas.

@@ -1,0 +1,21 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/good-leap-developer-api-openapi.yml
+standards:
+- id: rest
+  conforms: true
+  evidence: Resource-oriented HTTP+JSON API over /posfinancing/rest/v2
+- id: oauth2
+  conforms: false
+  evidence: Auth is a proprietary JWT token endpoint, not RFC 6749 OAuth2 flows
+- id: oidc
+  conforms: false
+- id: jwt-bearer
+  conforms: true
+  evidence: 'Authorization: Bearer <JWT> issued by /auth/token'
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No application/problem+json documented in public collection
+- id: pagination
+  conforms: true
+  evidence: page / pageSize query parameters on list endpoints

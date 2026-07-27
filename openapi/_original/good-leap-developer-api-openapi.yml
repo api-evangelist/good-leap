@@ -1,0 +1,1235 @@
+openapi: 3.0.3
+info:
+  title: GoodLeap Developer API
+  version: '2.0'
+  description: 'The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement
+    loans through their full lifecycle: authentication and elevation, offers and payment calculation,
+    loan submission, status tracking, case/stipulation management, document upload, project and milestone
+    management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap
+    Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response
+    schemas are intentionally minimal because the source collection does not publish full schemas.'
+  x-derived-from: postman/good-leap-developer-api.postman_collection.json
+servers:
+- url: https://api.goodleap.com
+  description: Production
+- url: https://sandbox01-api.goodleap.com
+  description: Sandbox / test
+tags:
+- name: Version 2.0
+- name: Authorization & Elevation Management
+- name: States & Channels
+- name: Promotions
+- name: Install Categories & Loan Limitations
+- name: Offers
+- name: Calculate Payments
+- name: Disclosures
+- name: Loan Submission
+- name: Loan Status
+- name: Case (loan stipulations) Management
+- name: Loan Documents Management
+- name: Verify Loan Details
+- name: Project Management
+- name: Milestone Management
+- name: Loan Change Orders
+- name: Loan Notes Management
+- name: Loan Tag Management
+- name: User Management
+- name: Toolbox
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /posfinancing/rest/v2/auth/token (organizationId), refreshed
+        via /auth/token/refresh.
+security:
+- bearerAuth: []
+paths:
+  /posfinancing/rest/v2/auth/organizations:
+    get:
+      operationId: connectedOrganizationsList
+      summary: Connected Organizations List
+      tags:
+      - Authorization & Elevation Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a list of connected organizations.
+  /posfinancing/rest/v2/auth/token:
+    post:
+      operationId: generateJwtToken
+      summary: Generate JWT Token
+      tags:
+      - Authorization & Elevation Management
+      responses:
+        '200':
+          description: Successful response
+      description: Returns an elevated access token with Guest claims from an input host organization.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/auth/token/refresh:
+    post:
+      operationId: refreshJwtToken
+      summary: Refresh JWT Token
+      tags:
+      - Authorization & Elevation Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Create a refreshed elevated jwt token with Guest claims from a host organization.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/parties:
+    get:
+      operationId: connectedParties
+      summary: Connected Parties
+      tags:
+      - Authorization & Elevation Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a list of connected parties.
+  /posfinancing/rest/v2/states:
+    get:
+      operationId: channelsByStates
+      summary: Channels by States
+      tags:
+      - States & Channels
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: "Get a collection of valid states for the client. \nUseful when searching for offers\
+        \ that are available to an applicant in their state."
+      parameters:
+      - name: channels
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: channels
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/channels:
+    get:
+      operationId: statesByChannels
+      summary: States by Channels
+      tags:
+      - States & Channels
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: "Get a collection of valid channels for the client. \nUseful when searching for offers\
+        \ that are available to an applicant given a channel under which the client\nwishes to operate."
+      parameters:
+      - name: states
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: states
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/promotions:
+    get:
+      operationId: promotions
+      summary: Promotions
+      tags:
+      - Promotions
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Returns a collection of promotions to use when getting offers.
+      parameters:
+      - name: categoryId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: offerId
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/categories:
+    get:
+      operationId: installCategories
+      summary: Install Categories
+      tags:
+      - Install Categories & Loan Limitations
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Returns a collection of categories.
+  /posfinancing/rest/v2/categories/all/limitations:
+    get:
+      operationId: allLoanMinMaxValuesForStatesAndCategories
+      summary: All Loan min/max values for states and categories
+      tags:
+      - Install Categories & Loan Limitations
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get categories limitations
+      parameters:
+      - name: states
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: states
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/categories/{id}/limitations:
+    get:
+      operationId: loanMinMaxValuesByCategoryId
+      summary: Loan min/max values by category ID
+      tags:
+      - Install Categories & Loan Limitations
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get category limitations
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: states
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: states
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/offers:
+    get:
+      operationId: availableLoanOffers
+      summary: Available Loan Offers
+      tags:
+      - Loan Change Orders
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Returns a collection of Offers.
+      parameters:
+      - name: loanId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: channels
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: channels
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: states
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: states
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: categoryId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: promotionIds
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/itc-latest:
+    get:
+      operationId: currentItcPercentage
+      summary: Current ITC Percentage
+      tags:
+      - Calculate Payments
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get the current ITC percentage.
+  /posfinancing/rest/v2/payments:
+    get:
+      operationId: monthlyLoanPayments
+      summary: Monthly Loan Payments
+      tags:
+      - Calculate Payments
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Calculate estimated payments for offers.
+      parameters:
+      - name: offerIds
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: offerIds
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: amount
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: extraPaydownAmount
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: extraPaydownPercent
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: currencyType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: promotionIds
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: promotionIds
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/disclosures:
+    get:
+      operationId: disclosures
+      summary: Disclosures
+      tags:
+      - Disclosures
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a list of available disclosures.
+      parameters:
+      - name: current
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: inputCategory
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans:
+    post:
+      operationId: submitLoanApplication
+      summary: Submit Loan Application
+      tags:
+      - Loan Submission
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: "Submit an application to create a new loan. Returns the application\u2019s outcome"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+    get:
+      operationId: listLoans
+      summary: List Loans
+      tags:
+      - Loan Status
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a list of loans submitted by the client.
+      parameters:
+      - name: referenceNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: tags
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: tags
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans-share:
+    post:
+      operationId: shareLoanApplication
+      summary: Share Loan Application
+      tags:
+      - Loan Submission
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Returns the url and an optional email to the application for completion and loan submission.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}:
+    get:
+      operationId: loanById
+      summary: Loan by ID
+      tags:
+      - Loan Status
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get the details of a Loan instance.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/status:
+    get:
+      operationId: loanStatus
+      summary: Loan Status
+      tags:
+      - Loan Status
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: "Get the current timestamps for the loan. \nThis can include milestones, document signing,\
+        \ approval status and more."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/offer:
+    get:
+      operationId: loanOfferDetails
+      summary: Loan Offer Details
+      tags:
+      - Loan Status
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get the details of the current offer associated with a loan ID.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/timeline:
+    get:
+      operationId: loanTimeline
+      summary: Loan Timeline
+      tags:
+      - Loan Status
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get the loan timeline.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/actions:
+    get:
+      operationId: nextAvailableLoanActions
+      summary: Next Available Loan Actions
+      tags:
+      - Loan Status
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get the next actions for a loan.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/cases:
+    get:
+      operationId: cases
+      summary: Cases
+      tags:
+      - Case (loan stipulations) Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Returns a collection of cases.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/cases/{caseId}/uploadurl:
+    get:
+      operationId: caseUploadUrl
+      summary: Case Upload URL
+      tags:
+      - Case (loan stipulations) Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a single-use, signed URL to upload a case document.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: caseId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: mimeType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: docType
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{loanId}/cases:
+    put:
+      operationId: updateSalesRepStateLicenseInfo
+      summary: Update Sales Rep State License Info
+      tags:
+      - Case (loan stipulations) Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: "Update a loan\u2019s case information."
+      parameters:
+      - name: loanId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}/portals/borrower-upload-url:
+    get:
+      operationId: goodleapBorrowerPortalUrl
+      summary: GoodLeap Borrower Portal URL
+      tags:
+      - Case (loan stipulations) Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: URL redirect to the GoodLeap hosted borrower upload experience to upload documents
+        for cases.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/cases/{id}/identity-verification:
+    get:
+      operationId: socureIdentityVerification
+      summary: Socure Identity Verification
+      tags:
+      - Case (loan stipulations) Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: documentType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: mobileNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: sendSms
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/uploadurls:
+    get:
+      operationId: homeImprovementContractUploadUrl
+      summary: Home Improvement Contract Upload URL
+      tags:
+      - Loan Documents Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a single-use, signed URL to upload a case document.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: uploadType
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/documents:
+    post:
+      operationId: sendLoanDocuments
+      summary: Send Loan Documents
+      tags:
+      - Loan Documents Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: "A successful request will result in loan documents being sent to the borrower(s).\
+        \ \nThis can happen as one of two scenarios:\n1. If loan documents have yet to be signed, unsigned\
+        \ documents are sent.\n2. If loan documents have already been signed, a copy of the signed documents\
+        \ are re-sent. \n   The loan\u2019s status will remain untouched."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}/details:
+    post:
+      operationId: verifyLoanDetails
+      summary: Verify Loan Details
+      tags:
+      - Verify Loan Details
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Confirm the amount and offer of the loan.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}/project-types:
+    get:
+      operationId: projectsTypesInfo
+      summary: Projects Types Info
+      tags:
+      - Project Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get the loan's projects types.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: inputs
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: inputs
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: validation
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/project:
+    get:
+      operationId: loanProjectInfo
+      summary: Loan Project Info
+      tags:
+      - Project Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get the loan's project details.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/projects:
+    get:
+      operationId: loanProjectsInfo
+      summary: Loan Projects Info
+      tags:
+      - Project Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get the loan's project details.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: updateProjectsInfo
+      summary: Update Projects Info
+      tags:
+      - Project Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: "Update a loan\u2019s projects information."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/categories/{id}/components:
+    get:
+      operationId: projectComponents
+      summary: Project Components
+      tags:
+      - Project Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get a list of components with approved manufacturers.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/cpc:
+    post:
+      operationId: sendCertificateOfProjectCompletionCpcHiOnly
+      summary: Send Certificate of Project Completion (CPC) - HI only
+      tags:
+      - Milestone Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Sends loan CPC
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}/milestones:
+    post:
+      operationId: transitionAMilestone
+      summary: Transition a Milestone
+      tags:
+      - Milestone Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Transition a loan to a client-provided milestone.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}/changeorders:
+    post:
+      operationId: createAChangeOrder
+      summary: Create a Change Order
+      tags:
+      - Loan Change Orders
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: 'Submit a change order to update the amount, offer, or enrollments on a loan.
+
+        Note: Once a loan has been funded, Autopay enrollment can no longer be managed via API.'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}/cancellations:
+    post:
+      operationId: cancelALoan
+      summary: Cancel a Loan
+      tags:
+      - Loan Change Orders
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: "Submit a cancellation for a given loan. \nIn order to successfully cancel the loan,\
+        \ it must not be in the following states:\n- Have a status of `DECLINED`, `CANCELLED`, or `FUNDED`\n\
+        - Reached the Notice To Proceed (NTP) milestone"
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}/notes:
+    get:
+      operationId: loanNotes
+      summary: Loan Notes
+      tags:
+      - Loan Notes Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get list of all notes associated with a loan and its cases.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: createANote
+      summary: Create a Note
+      tags:
+      - Loan Notes Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Post a note to a loan and optionally its cases.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}/notes/{reference}:
+    get:
+      operationId: loanNotesByReference
+      summary: Loan Notes by Reference
+      tags:
+      - Loan Notes Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Get list of all notes associated with a loan and its cases by reference.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: reference
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/loans/{id}/tags:
+    post:
+      operationId: addLoanTags
+      summary: Add Loan Tags
+      tags:
+      - Loan Tag Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Add loan tags to a loan.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/loans/{id}/tags{batchDelete}:
+    post:
+      operationId: deleteLoanTags
+      summary: Delete Loan Tags
+      tags:
+      - Loan Tag Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Delete loan tags from a loan.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: batchDelete
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/user/{id}:
+    get:
+      operationId: userById
+      summary: User by Id
+      tags:
+      - User Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Returns a user by Id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posfinancing/rest/v2/users:
+    post:
+      operationId: createUser
+      summary: Create User
+      tags:
+      - User Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Create a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+    get:
+      operationId: listAnOrganizationsUsers
+      summary: List an Organizations Users
+      tags:
+      - User Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Returns a collection of users belonging to the requesting organization.
+      parameters:
+      - name: email
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: phoneNumber
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: string
+  /posfinancing/rest/v2/users/roles-channels:
+    get:
+      operationId: allRolesAndChannels
+      summary: All Roles and Channels
+      tags:
+      - User Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Retrieve the possible list of roles and channels that are required for user creation.
+  /posfinancing/rest/v2/users/{id}/license:
+    put:
+      operationId: updateUserStateLicense
+      summary: Update User State License
+      tags:
+      - User Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Update user license by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/users/{id}/role:
+    put:
+      operationId: updateUserRole
+      summary: Update User Role
+      tags:
+      - User Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: "Update a user\u2019s role."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/users/{id}:
+    put:
+      operationId: updateUserInformation
+      summary: Update User Information
+      tags:
+      - User Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: Update user information by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /posfinancing/rest/v2/users/{id}/channels:
+    put:
+      operationId: updateUserChannels
+      summary: Update User Channels
+      tags:
+      - User Management
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      description: "Update a user\u2019s channels."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+  /toolbox/rest/v2/loans/{id}/clear:
+    post:
+      operationId: fundLoan
+      summary: Fund Loan
+      tags:
+      - Toolbox
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object

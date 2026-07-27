@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: searched
+source: postman/good-leap-developer-api.postman_collection.json
+environments:
+- mode: sandbox
+  base_url: https://sandbox01-api.goodleap.com
+  notes: Sandbox host used by the public Postman collection (baseUrl + toolboxUrl variables).
+- mode: production
+  base_url: https://api.goodleap.com
+access: Partner credentials and access to developer.goodleap.com are required before calling either environment.
+test_simulation:
+  description: Toolbox endpoints simulate lender-side loan lifecycle transitions in sandbox so partners
+    can drive an application end-to-end without a real lender.
+  triggers:
+  - name: Clear Cases
+    method: POST
+    path: /toolbox/rest/v2/loans/{id}/clear
+  - name: Sign Documents
+    method: POST
+    path: /toolbox/rest/v2/loans/{id}/clear
+  - name: Complete Contract Review
+    method: POST
+    path: /toolbox/rest/v2/loans/{id}/clear
+  - name: Fund Loan
+    method: POST
+    path: /toolbox/rest/v2/loans/{id}/clear
+notes: No published static test SSNs/card numbers; the collection uses placeholder applicant values. Never
+  treat placeholders as valid test data.

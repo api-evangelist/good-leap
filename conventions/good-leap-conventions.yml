@@ -1,0 +1,34 @@
+generated: '2026-07-19'
+method: derived
+source: postman/good-leap-developer-api.postman_collection.json + openapi/good-leap-developer-api-openapi.yml
+authentication:
+  style: JWT bearer token
+  obtain: POST /posfinancing/rest/v2/auth/token with organizationId
+  refresh: POST /posfinancing/rest/v2/auth/token/refresh
+  header: 'Authorization: Bearer <jwt>'
+  notes: Partner credentials required; request access at developer.goodleap.com. Elevation/organization
+    scoping via /auth/organizations and /parties.
+versioning:
+  scheme: uri-path
+  current: v2
+  example: /posfinancing/rest/v2/...
+pagination:
+  style: page-number
+  params:
+  - page
+  - pageSize
+  notes: List endpoints (e.g. GET /loans) accept page and pageSize query parameters.
+content_type:
+  request: application/json
+  response: application/json
+document_upload:
+  pattern: pre-signed URL
+  notes: Document/HIC/case uploads issue a pre-signed URL (GET .../uploadurl[s]) then PUT the file directly
+    to that URL.
+idempotency:
+  supported: false
+  notes: No idempotency-key header is documented in the public collection.
+cross_links:
+  authentication: authentication/good-leap-authentication.yml
+  lifecycle: lifecycle/good-leap-lifecycle.yml
+  errors: null

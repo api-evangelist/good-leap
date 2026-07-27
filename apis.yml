@@ -1,22 +1,292 @@
 aid: good-leap
 name: Good Leap
-description: 'Good Leap is a company surfaced as a portfolio company of ribbit-capital and added to the
-  API Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting the
-  enrichment pipeline.'
+description: >-
+  GoodLeap (formerly Loanpal) is a fintech platform providing point-of-sale financing for sustainable
+  home improvements — solar and battery storage, efficient heating and cooling, roofing and ventilation,
+  water conservation, and energy-efficient windows. Its Developer API (v2, POS financing) lets approved
+  partners originate and manage home-improvement loans through the full lifecycle: authentication and
+  elevation, offers and payment calculation, loan submission, status and timeline tracking, case
+  (stipulation) management, document upload via pre-signed URLs, project and milestone management,
+  change orders, notes, tags, and user management. Authentication is JWT bearer; partner credentials
+  from developer.goodleap.com are required. This profile was surfaced as a portfolio company of Ribbit
+  Capital and enriched from GoodLeap's public developer surface (developer portal + public Postman
+  collection).
 url: https://raw.githubusercontent.com/api-evangelist/good-leap/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - ribbit-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: developer-api-captured
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.goodleap.com/opengraph-image.jpg
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Fintech
-apis: []
+- Financing
+- Lending
+- Solar
+- Home Improvement
+- Sustainability
+- Point of Sale
+- Loans
+- Payments
+apis:
+- aid: good-leap:good-leap-authorization-elevation-management-api
+  name: Good Leap Authorization & Elevation Management API
+  description: >-
+    The Authorization & Elevation Management API from Good Leap — 4 operation(s) for authorization & elevation
+    management.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Authorization & Elevation Management
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-authorization-elevation-management-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-calculate-payments-api
+  name: Good Leap Calculate Payments API
+  description: The Calculate Payments API from Good Leap — 2 operation(s) for calculate payments.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Calculate Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-calculate-payments-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-case-loan-stipulations-management-api
+  name: Good Leap Case (loan stipulations) Management API
+  description: >-
+    The Case (loan stipulations) Management API from Good Leap — 5 operation(s) for case (loan stipulations)
+    management.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Case (loan stipulations) Management
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-case-loan-stipulations-management-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-disclosures-api
+  name: Good Leap Disclosures API
+  description: The Disclosures API from Good Leap — 1 operation(s) for disclosures.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Disclosures
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-disclosures-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-install-categories-loan-limitations-api
+  name: Good Leap Install Categories & Loan Limitations API
+  description: >-
+    The Install Categories & Loan Limitations API from Good Leap — 3 operation(s) for install categories
+    & loan limitations.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Install Categories & Loan Limitations
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-install-categories-loan-limitations-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-loan-change-orders-api
+  name: Good Leap Loan Change Orders API
+  description: The Loan Change Orders API from Good Leap — 3 operation(s) for loan change orders.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Loan Change Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-loan-change-orders-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-loan-documents-management-api
+  name: Good Leap Loan Documents Management API
+  description: >-
+    The Loan Documents Management API from Good Leap — 2 operation(s) for loan documents management.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Loan Documents Management
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-loan-documents-management-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-loan-notes-management-api
+  name: Good Leap Loan Notes Management API
+  description: The Loan Notes Management API from Good Leap — 2 operation(s) for loan notes management.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Loan Notes Management
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-loan-notes-management-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-loan-status-api
+  name: Good Leap Loan Status API
+  description: The Loan Status API from Good Leap — 6 operation(s) for loan status.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Loan Status
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-loan-status-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-loan-submission-api
+  name: Good Leap Loan Submission API
+  description: The Loan Submission API from Good Leap — 2 operation(s) for loan submission.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Loan Submission
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-loan-submission-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-loan-tag-management-api
+  name: Good Leap Loan Tag Management API
+  description: The Loan Tag Management API from Good Leap — 2 operation(s) for loan tag management.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Loan Tag Management
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-loan-tag-management-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-milestone-management-api
+  name: Good Leap Milestone Management API
+  description: The Milestone Management API from Good Leap — 2 operation(s) for milestone management.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Milestone Management
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-milestone-management-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-project-management-api
+  name: Good Leap Project Management API
+  description: The Project Management API from Good Leap — 4 operation(s) for project management.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Project Management
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-project-management-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-promotions-api
+  name: Good Leap Promotions API
+  description: The Promotions API from Good Leap — 1 operation(s) for promotions.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Promotions
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-promotions-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-states-channels-api
+  name: Good Leap States & Channels API
+  description: The States & Channels API from Good Leap — 2 operation(s) for states & channels.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - States & Channels
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-states-channels-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-toolbox-api
+  name: Good Leap Toolbox API
+  description: The Toolbox API from Good Leap — 1 operation(s) for toolbox.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Toolbox
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-toolbox-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-user-management-api
+  name: Good Leap User Management API
+  description: The User Management API from Good Leap — 7 operation(s) for user management.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - User Management
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-user-management-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- aid: good-leap:good-leap-verify-loan-details-api
+  name: Good Leap Verify Loan Details API
+  description: The Verify Loan Details API from Good Leap — 1 operation(s) for verify loan details.
+  humanURL: https://developer.goodleap.com/
+  baseURL: https://api.goodleap.com
+  tags:
+  - Verify Loan Details
+  properties:
+  - type: OpenAPI
+    url: openapi/good-leap-verify-loan-details-api-openapi.yml
+  - type: Postman
+    url: >-
+      https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +295,55 @@ maintainers:
 common:
 - type: Website
   url: https://www.goodleap.com
+- type: DeveloperPortal
+  url: https://developer.goodleap.com/
+- type: Documentation
+  url: https://developer.goodleap.com/docs
+- type: APIReference
+  url: https://developer.goodleap.com/reference
+- type: Blog
+  url: https://www.goodleap.com/blog
+- type: Support
+  url: https://support.goodleap.com/support/solutions
+- type: TermsOfService
+  url: https://www.goodleap.com/terms
+- type: PrivacyPolicy
+  url: https://www.goodleap.com/privacy
+- type: Postman
+  url: https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
+- type: OpenAPI
+  url: openapi/good-leap-developer-api-openapi.yml
+- type: Authentication
+  url: authentication/good-leap-authentication.yml
+- type: Conventions
+  url: conventions/good-leap-conventions.yml
+- type: Sandbox
+  url: sandbox/good-leap-sandbox.yml
+- type: MCPServer
+  url: mcp/good-leap-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Conformance
+  url: conformance/good-leap-conformance.yml
+- type: Lifecycle
+  url: lifecycle/good-leap-lifecycle.yml
+- type: DataModel
+  url: data-model/good-leap-data-model.yml
+- type: Arazzo
+  name: Originate and track a GoodLeap loan
+  url: arazzo/good-leap-originate-and-track-loan.yml
+- type: LLMsTxt
+  url: llms/good-leap-llms.txt
+- type: AgenticAccess
+  url: agentic-access/good-leap-agentic-access.yml
+- type: Security
+  url: https://www.goodleap.com/report-a-security-bug
+- type: VulnerabilityDisclosure
+  url: security/good-leap-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/good-leap-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

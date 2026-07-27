@@ -1,0 +1,53 @@
+arazzo: 1.0.1
+info:
+  title: Originate and track a GoodLeap loan
+  version: 1.0.0
+  summary: Authenticate, submit a loan application, then track its status and next actions.
+sourceDescriptions:
+- name: goodleap
+  url: ../openapi/good-leap-developer-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: originateAndTrackLoan
+  summary: Partner authenticates, submits a loan application, and tracks it to a decision.
+  inputs:
+    type: object
+    properties:
+      organizationId:
+        type: string
+      applicant:
+        type: object
+  steps:
+  - stepId: authenticate
+    operationId: generateJwtToken
+    requestBody:
+      contentType: application/json
+      payload:
+        organizationId: $inputs.organizationId
+    outputs:
+      token: $response.body#/token
+  - stepId: submitLoan
+    operationId: submitLoanApplication
+    requestBody:
+      contentType: application/json
+      payload:
+        applicant: $inputs.applicant
+    outputs:
+      loanId: $response.body#/id
+  - stepId: checkStatus
+    operationId: loanStatus
+    parameters:
+    - name: id
+      in: path
+      value: $steps.submitLoan.outputs.loanId
+    outputs:
+      status: $response.body#/status
+  - stepId: nextActions
+    operationId: nextAvailableLoanActions
+    parameters:
+    - name: id
+      in: path
+      value: $steps.submitLoan.outputs.loanId
+  outputs:
+    loanId: $steps.submitLoan.outputs.loanId
+    status: $steps.checkStatus.outputs.status

@@ -1,0 +1,23 @@
+# GoodLeap
+
+> GoodLeap is a fintech platform for point-of-sale financing of sustainable home improvements (solar, battery storage, HVAC, roofing, water conservation, energy-efficient windows). Its Developer API lets approved partners originate and manage home-improvement loans through their full lifecycle. Partner credentials from developer.goodleap.com are required.
+
+## APIs
+
+- [GoodLeap Developer API (v2)](https://developer.goodleap.com/): REST + JSON POS-financing API. JWT bearer auth. Base: https://api.goodleap.com (sandbox: https://sandbox01-api.goodleap.com).
+
+## Specs
+
+- [OpenAPI (derived)](openapi/good-leap-developer-api-openapi.yml)
+- [Postman collection](postman/good-leap-developer-api.postman_collection.json)
+- [Authentication profile](authentication/good-leap-authentication.yml)
+- [API conventions](conventions/good-leap-conventions.yml)
+- [Data model](data-model/good-leap-data-model.yml)
+- [Arazzo workflow: originate and track a loan](arazzo/good-leap-originate-and-track-loan.yml)
+
+## Docs
+
+- [Developer portal](https://developer.goodleap.com/)
+- [Developer overview](https://www.goodleap.com/developers)
+- [Public Postman workspace](https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview)
+- [Report a security bug](https://www.goodleap.com/report-a-security-bug)

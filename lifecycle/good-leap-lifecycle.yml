@@ -1,0 +1,15 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/good-leap-developer-api-openapi.yml
+versioning:
+  scheme: uri-path
+  current: v2
+  docs: https://developer.goodleap.com/
+deprecation:
+  policy_url: null
+  sunset_header: null
+  notes: No public deprecation policy located.
+status_page:
+  url: null
+  notes: goodleap.statuspage.io exists but is marked "Page Inactive"; no active public status page.
+deprecated_operations: []

@@ -1,0 +1,169 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/good-leap-developer-api-openapi.yml
+server:
+  name: good-leap
+  transport: http
+  note: No official GoodLeap MCP server published; candidate tool list derived from the Developer API
+    operations.
+tools:
+- name: connected_organizations_list
+  description: Connected Organizations List
+  source_operation: openapi/good-leap-developer-api-openapi.yml#connectedOrganizationsList
+- name: generate_jwt_token
+  description: Generate JWT Token
+  source_operation: openapi/good-leap-developer-api-openapi.yml#generateJwtToken
+- name: refresh_jwt_token
+  description: Refresh JWT Token
+  source_operation: openapi/good-leap-developer-api-openapi.yml#refreshJwtToken
+- name: connected_parties
+  description: Connected Parties
+  source_operation: openapi/good-leap-developer-api-openapi.yml#connectedParties
+- name: channels_by_states
+  description: Channels by States
+  source_operation: openapi/good-leap-developer-api-openapi.yml#channelsByStates
+- name: states_by_channels
+  description: States by Channels
+  source_operation: openapi/good-leap-developer-api-openapi.yml#statesByChannels
+- name: promotions
+  description: Promotions
+  source_operation: openapi/good-leap-developer-api-openapi.yml#promotions
+- name: install_categories
+  description: Install Categories
+  source_operation: openapi/good-leap-developer-api-openapi.yml#installCategories
+- name: all_loan_min_max_values_for_states_and_categories
+  description: All Loan min/max values for states and categories
+  source_operation: openapi/good-leap-developer-api-openapi.yml#allLoanMinMaxValuesForStatesAndCategories
+- name: loan_min_max_values_by_category_id
+  description: Loan min/max values by category ID
+  source_operation: openapi/good-leap-developer-api-openapi.yml#loanMinMaxValuesByCategoryId
+- name: available_loan_offers
+  description: Available Loan Offers
+  source_operation: openapi/good-leap-developer-api-openapi.yml#availableLoanOffers
+- name: current_itc_percentage
+  description: Current ITC Percentage
+  source_operation: openapi/good-leap-developer-api-openapi.yml#currentItcPercentage
+- name: monthly_loan_payments
+  description: Monthly Loan Payments
+  source_operation: openapi/good-leap-developer-api-openapi.yml#monthlyLoanPayments
+- name: disclosures
+  description: Disclosures
+  source_operation: openapi/good-leap-developer-api-openapi.yml#disclosures
+- name: submit_loan_application
+  description: Submit Loan Application
+  source_operation: openapi/good-leap-developer-api-openapi.yml#submitLoanApplication
+- name: list_loans
+  description: List Loans
+  source_operation: openapi/good-leap-developer-api-openapi.yml#listLoans
+- name: share_loan_application
+  description: Share Loan Application
+  source_operation: openapi/good-leap-developer-api-openapi.yml#shareLoanApplication
+- name: loan_by_id
+  description: Loan by ID
+  source_operation: openapi/good-leap-developer-api-openapi.yml#loanById
+- name: loan_status
+  description: Loan Status
+  source_operation: openapi/good-leap-developer-api-openapi.yml#loanStatus
+- name: loan_offer_details
+  description: Loan Offer Details
+  source_operation: openapi/good-leap-developer-api-openapi.yml#loanOfferDetails
+- name: loan_timeline
+  description: Loan Timeline
+  source_operation: openapi/good-leap-developer-api-openapi.yml#loanTimeline
+- name: next_available_loan_actions
+  description: Next Available Loan Actions
+  source_operation: openapi/good-leap-developer-api-openapi.yml#nextAvailableLoanActions
+- name: cases
+  description: Cases
+  source_operation: openapi/good-leap-developer-api-openapi.yml#cases
+- name: case_upload_url
+  description: Case Upload URL
+  source_operation: openapi/good-leap-developer-api-openapi.yml#caseUploadUrl
+- name: update_sales_rep_state_license_info
+  description: Update Sales Rep State License Info
+  source_operation: openapi/good-leap-developer-api-openapi.yml#updateSalesRepStateLicenseInfo
+- name: goodleap_borrower_portal_url
+  description: GoodLeap Borrower Portal URL
+  source_operation: openapi/good-leap-developer-api-openapi.yml#goodleapBorrowerPortalUrl
+- name: socure_identity_verification
+  description: Socure Identity Verification
+  source_operation: openapi/good-leap-developer-api-openapi.yml#socureIdentityVerification
+- name: home_improvement_contract_upload_url
+  description: Home Improvement Contract Upload URL
+  source_operation: openapi/good-leap-developer-api-openapi.yml#homeImprovementContractUploadUrl
+- name: send_loan_documents
+  description: Send Loan Documents
+  source_operation: openapi/good-leap-developer-api-openapi.yml#sendLoanDocuments
+- name: verify_loan_details
+  description: Verify Loan Details
+  source_operation: openapi/good-leap-developer-api-openapi.yml#verifyLoanDetails
+- name: projects_types_info
+  description: Projects Types Info
+  source_operation: openapi/good-leap-developer-api-openapi.yml#projectsTypesInfo
+- name: loan_project_info
+  description: Loan Project Info
+  source_operation: openapi/good-leap-developer-api-openapi.yml#loanProjectInfo
+- name: loan_projects_info
+  description: Loan Projects Info
+  source_operation: openapi/good-leap-developer-api-openapi.yml#loanProjectsInfo
+- name: update_projects_info
+  description: Update Projects Info
+  source_operation: openapi/good-leap-developer-api-openapi.yml#updateProjectsInfo
+- name: project_components
+  description: Project Components
+  source_operation: openapi/good-leap-developer-api-openapi.yml#projectComponents
+- name: send_certificate_of_project_completion_cpc_hi_only
+  description: Send Certificate of Project Completion (CPC) - HI only
+  source_operation: openapi/good-leap-developer-api-openapi.yml#sendCertificateOfProjectCompletionCpcHiOnly
+- name: transition_a_milestone
+  description: Transition a Milestone
+  source_operation: openapi/good-leap-developer-api-openapi.yml#transitionAMilestone
+- name: create_a_change_order
+  description: Create a Change Order
+  source_operation: openapi/good-leap-developer-api-openapi.yml#createAChangeOrder
+- name: cancel_a_loan
+  description: Cancel a Loan
+  source_operation: openapi/good-leap-developer-api-openapi.yml#cancelALoan
+- name: loan_notes
+  description: Loan Notes
+  source_operation: openapi/good-leap-developer-api-openapi.yml#loanNotes
+- name: create_a_note
+  description: Create a Note
+  source_operation: openapi/good-leap-developer-api-openapi.yml#createANote
+- name: loan_notes_by_reference
+  description: Loan Notes by Reference
+  source_operation: openapi/good-leap-developer-api-openapi.yml#loanNotesByReference
+- name: add_loan_tags
+  description: Add Loan Tags
+  source_operation: openapi/good-leap-developer-api-openapi.yml#addLoanTags
+- name: delete_loan_tags
+  description: Delete Loan Tags
+  source_operation: openapi/good-leap-developer-api-openapi.yml#deleteLoanTags
+- name: user_by_id
+  description: User by Id
+  source_operation: openapi/good-leap-developer-api-openapi.yml#userById
+- name: create_user
+  description: Create User
+  source_operation: openapi/good-leap-developer-api-openapi.yml#createUser
+- name: list_an_organizations_users
+  description: List an Organizations Users
+  source_operation: openapi/good-leap-developer-api-openapi.yml#listAnOrganizationsUsers
+- name: all_roles_and_channels
+  description: All Roles and Channels
+  source_operation: openapi/good-leap-developer-api-openapi.yml#allRolesAndChannels
+- name: update_user_state_license
+  description: Update User State License
+  source_operation: openapi/good-leap-developer-api-openapi.yml#updateUserStateLicense
+- name: update_user_role
+  description: Update User Role
+  source_operation: openapi/good-leap-developer-api-openapi.yml#updateUserRole
+- name: update_user_information
+  description: Update User Information
+  source_operation: openapi/good-leap-developer-api-openapi.yml#updateUserInformation
+- name: update_user_channels
+  description: Update User Channels
+  source_operation: openapi/good-leap-developer-api-openapi.yml#updateUserChannels
+- name: fund_loan
+  description: Fund Loan
+  source_operation: openapi/good-leap-developer-api-openapi.yml#fundLoan

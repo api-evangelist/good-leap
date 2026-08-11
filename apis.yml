@@ -293,6 +293,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/good-leap-developer-api-overlay.yaml
 - type: Website
   url: https://www.goodleap.com
 - type: DeveloperPortal
@@ -312,7 +314,7 @@ common:
 - type: Postman
   url: https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
 - type: OpenAPI
-  url: openapi/good-leap-developer-api-openapi.yml
+  url: openapi/_original/good-leap-developer-api-openapi.yml
 - type: Authentication
   url: authentication/good-leap-authentication.yml
 - type: Conventions

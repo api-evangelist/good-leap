@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoodLeap Developer Authorization & Elevation Management Toolbox API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Toolbox",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fund Loan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.goodleap.com/toolbox/rest/v2/loans/:id/clear",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fund Loan"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

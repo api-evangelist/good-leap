@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoodLeap Developer Authorization & Elevation Management Disclosures API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Disclosures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Disclosures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/disclosures",
+            "params": [
+              {
+                "name": "current",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "inputCategory",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a list of available disclosures."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

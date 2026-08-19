@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoodLeap Developer Authorization & Elevation Management Loan Change Orders API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loan Change Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Available Loan Offers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/offers",
+            "params": [
+              {
+                "name": "loanId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "channels",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "states",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "promotionIds",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a collection of Offers."
+        },
+        {
+          "info": {
+            "name": "Create a Change Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/loans/:id/changeorders",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit a change order to update the amount, offer, or enrollments on a loan.\nNote: Once a loan has been funded, Autopay enrollment can no longer be managed via API."
+        },
+        {
+          "info": {
+            "name": "Cancel a Loan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/loans/:id/cancellations",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Submit a cancellation for a given loan. \nIn order to successfully cancel the loan, it must not be in the following states:\n- Have a status of `DECLINED`, `CANCELLED`, or `FUNDED`\n- Reached the Notice To Proceed (NTP) milestone"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

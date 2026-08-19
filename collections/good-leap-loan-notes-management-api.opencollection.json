@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoodLeap Developer Authorization & Elevation Management Loan Notes Management API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loan Notes Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Loan Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/loans/:id/notes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get list of all notes associated with a loan and its cases."
+        },
+        {
+          "info": {
+            "name": "Create a Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/loans/:id/notes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Post a note to a loan and optionally its cases."
+        },
+        {
+          "info": {
+            "name": "Loan Notes by Reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/loans/:id/notes/:reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "reference",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get list of all notes associated with a loan and its cases by reference."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

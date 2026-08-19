@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoodLeap Developer Authorization & Elevation Management API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorization & Elevation Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Connected Organizations List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/auth/organizations",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a list of connected organizations."
+        },
+        {
+          "info": {
+            "name": "Generate JWT Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/auth/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns an elevated access token with Guest claims from an input host organization."
+        },
+        {
+          "info": {
+            "name": "Refresh JWT Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/auth/token/refresh",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a refreshed elevated jwt token with Guest claims from a host organization."
+        },
+        {
+          "info": {
+            "name": "Connected Parties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/parties",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a list of connected parties."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

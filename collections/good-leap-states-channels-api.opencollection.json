@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoodLeap Developer Authorization & Elevation Management States & Channels API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "States & Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Channels by States",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/states",
+            "params": [
+              {
+                "name": "channels",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a collection of valid states for the client. \nUseful when searching for offers that are available to an applicant in their state."
+        },
+        {
+          "info": {
+            "name": "States by Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/channels",
+            "params": [
+              {
+                "name": "states",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a collection of valid channels for the client. \nUseful when searching for offers that are available to an applicant given a channel under which the client\nwishes to operate."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

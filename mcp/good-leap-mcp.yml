@@ -167,3 +167,9 @@ tools:
 - name: fund_loan
   description: Fund Loan
   source_operation: openapi/good-leap-developer-api-openapi.yml#fundLoan
+deployment:
+  mode: none
+  verified: derived
+  tools: 53
+  checked: '2026-08-12'
+  source: catalog MCP census

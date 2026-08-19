@@ -1,0 +1,166 @@
+{
+  "item": [
+    {
+      "id": "e52acd54-0cc7-4fff-b298-f7c5f7e715b2",
+      "name": "Verify Loan Details",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "87ca248a-cde6-495a-b2d9-393c0e8749d1",
+          "name": "Verify Loan Details",
+          "request": {
+            "name": "Verify Loan Details",
+            "description": {
+              "content": "Confirm the amount and offer of the loan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posfinancing",
+                "rest",
+                "v2",
+                "loans",
+                ":id",
+                "details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9fb51e3-3064-4000-aa26-c325da5f639e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posfinancing",
+                    "rest",
+                    "v2",
+                    "loans",
+                    ":id",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.goodleap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c1e61d21-f5e3-4636-ac6c-9fdcd80bce94",
+    "name": "GoodLeap Developer Authorization & Elevation Management Verify Loan Details API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response schemas are intentionally minimal because the source collection does not publish full schemas.",
+      "type": "text/plain"
+    }
+  }
+}

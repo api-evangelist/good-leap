@@ -1,0 +1,279 @@
+{
+  "item": [
+    {
+      "id": "12f52062-b226-4b54-be68-cef52469fe30",
+      "name": "Calculate Payments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fea418eb-8819-4b7e-a0e7-d7dd5f842802",
+          "name": "Current ITC Percentage",
+          "request": {
+            "name": "Current ITC Percentage",
+            "description": {
+              "content": "Get the current ITC percentage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posfinancing",
+                "rest",
+                "v2",
+                "itc-latest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0f71a60e-7098-493a-a916-29b76ad07fe8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posfinancing",
+                    "rest",
+                    "v2",
+                    "itc-latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d866eb7-865f-4522-b21f-38c0b5f3aad0",
+          "name": "Monthly Loan Payments",
+          "request": {
+            "name": "Monthly Loan Payments",
+            "description": {
+              "content": "Calculate estimated payments for offers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posfinancing",
+                "rest",
+                "v2",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offerIds",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offerIds",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "extraPaydownAmount",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "extraPaydownPercent",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "currencyType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "promotionIds",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "promotionIds",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c1b0e12f-6c6b-4a7f-b1f9-b1f58f5f50bf",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posfinancing",
+                    "rest",
+                    "v2",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offerIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offerIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraPaydownAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraPaydownPercent",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currencyType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "promotionIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "promotionIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.goodleap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "74957554-c5d1-4802-8489-1621324ea712",
+    "name": "GoodLeap Developer Authorization & Elevation Management Calculate Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response schemas are intentionally minimal because the source collection does not publish full schemas.",
+      "type": "text/plain"
+    }
+  }
+}

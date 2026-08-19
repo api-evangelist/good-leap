@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoodLeap Developer Authorization & Elevation Management Loan Documents Management API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loan Documents Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Home Improvement Contract Upload URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/loans/:id/uploadurls",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "uploadType",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a single-use, signed URL to upload a case document."
+        },
+        {
+          "info": {
+            "name": "Send Loan Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.goodleap.com/posfinancing/rest/v2/loans/:id/documents",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A successful request will result in loan documents being sent to the borrower(s). \nThis can happen as one of two scenarios:\n1. If loan documents have yet to be signed, unsigned documents are sent.\n2. If loan documents have already been signed, a copy of the signed documents are re-sent. \n   The loan’s status will remain untouched."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

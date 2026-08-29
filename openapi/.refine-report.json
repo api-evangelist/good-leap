@@ -43,6 +43,26 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "good-leap-authorization-elevation-management-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-calculate-payments-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-case-loan-stipulations-management-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-disclosures-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-install-categories-loan-limitations-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-loan-change-orders-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-loan-documents-management-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-loan-notes-management-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-loan-status-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-loan-submission-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-loan-tag-management-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-milestone-management-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-project-management-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-promotions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-states-channels-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-toolbox-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-user-management-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "good-leap-verify-loan-details-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

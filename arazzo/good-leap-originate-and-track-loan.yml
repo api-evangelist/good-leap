@@ -4,8 +4,14 @@ info:
   version: 1.0.0
   summary: Authenticate, submit a loan application, then track its status and next actions.
 sourceDescriptions:
-- name: goodleap
-  url: ../openapi/good-leap-developer-api-openapi.yml
+- name: authorizationElevationManagementApi
+  url: ../openapi/good-leap-authorization-elevation-management-api-openapi.yml
+  type: openapi
+- name: loanStatusApi
+  url: ../openapi/good-leap-loan-status-api-openapi.yml
+  type: openapi
+- name: loanSubmissionApi
+  url: ../openapi/good-leap-loan-submission-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: originateAndTrackLoan

@@ -338,8 +338,6 @@ common:
   url: https://www.goodleap.com/privacy
 - type: Postman
   url: https://www.postman.com/loanpalapidocuments/goodleap-developer-api-public-resources/overview
-- type: OpenAPI
-  url: openapi/_original/good-leap-developer-api-openapi.yml
 - type: Authentication
   url: authentication/good-leap-authentication.yml
 - type: Conventions

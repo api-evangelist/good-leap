@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: GoodLeap Developer Authorization & Elevation Management API
   version: '2.0'
-  description: 'The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management. Derived faithfully from the public GoodLeap Postman collection (paths, methods, parameters, and JWT bearer auth are as published); request/response schemas are intentionally minimal because the source collection does not publish full schemas.'
+  description: 'The GoodLeap Developer API lets approved partners originate and manage sustainable home-improvement loans through their full lifecycle: authentication and elevation, offers and payment calculation, loan submission, status tracking, case/stipulation management, document upload, project and milestone management, change orders, notes, tags, and user management.'
   x-derived-from: postman/good-leap-developer-api.postman_collection.json
 servers:
 - url: https://api.goodleap.com
